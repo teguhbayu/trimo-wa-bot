@@ -2,8 +2,9 @@ import { Client, Message } from "@open-wa/wa-automate";
 import createAndSendSticker from "../helpers/createAndSendSticker";
 import decryptViewOncePhoto from "../helpers/decryptViewOncePhoto";
 import spamText from "../helpers/spamText";
-import askAi from "../helpers/askAi";
-import killArtists from "../helpers/generateImage";
+import listComm from "../helpers/list";
+// import askAi from "../helpers/askAi";
+// import killArtists from "../helpers/generateImage";
 
 export const commands = {
   "!open_sesame": {
@@ -32,16 +33,23 @@ export const commands = {
     function: (client: Client, message: Message) =>
       decryptViewOncePhoto(client, message, true),
   },
-  "!askai": {
-    name: "!askai",
-    description: "ask an LLM model",
-    params: [{ name: "prompt", description: "Prompt for AI", type: "text" }],
-    function: askAi,
+  "!list": {
+    name: "!list",
+    description: "bikin list dah",
+    function: (client: Client, message: Message) => {
+      listComm(client, message);
+    },
   },
-  "!killArtists": {
-    name: "!killArtists",
-    description: "Generate image from prompt",
-    params: [{ name: "prompt", description: "Prompt for AI", type: "text" }],
-    function: killArtists,
-  },
+  // "!askai": {
+  //   name: "!askai",
+  //   description: "ask an LLM model",
+  //   params: [{ name: "prompt", description: "Prompt for AI", type: "text" }],
+  //   function: askAi,
+  // },
+  // "!killArtists": {
+  //   name: "!killArtists",
+  //   description: "Generate image from prompt",
+  //   params: [{ name: "prompt", description: "Prompt for AI", type: "text" }],
+  //   function: killArtists,
+  // },
 };
