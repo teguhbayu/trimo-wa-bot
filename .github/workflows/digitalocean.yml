@@ -8,9 +8,10 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  deploy:
     runs-on: do-server
     steps:
+      - uses: actions/checkout@v4
       - name: create env
         run: |
           touch /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot/.env
