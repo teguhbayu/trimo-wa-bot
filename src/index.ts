@@ -6,7 +6,9 @@ import prisma from "./utils/prisma";
 import { commands } from "./utils/userCommands";
 
 const client = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth({
+    dataPath: "/home/trimo/wasap-auth",
+  }),
 });
 
 client.on("message_create", async (message) => {
