@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.node-persist/
+_IGNORE_session/
+build/
+session.data.json
+.env
+
+# managed
+**.data.json
+**.node-persist**
+**_IGNORE_**
+# end managed
+.wwebjs_auth/
+.wwebjs_cache/
