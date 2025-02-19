@@ -15,11 +15,13 @@ jobs:
       - name: create env
         run: |
           touch /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot/.env
-          echo 'DATABASE_URL=${{secrets.DATABASE_URL}}' >> /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot/.env
+          echo 'DATABASE_URL=${{secrets.DATABASE_URL}}' > /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot/.env
       - name: Install Modules
         run: npm ci
+      - name: Add browser args
+        run: sed -i '304 i browserArgs.push('--no-sandbox');' /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot/node_modules/whatsapp-web.js/src/Client.js
       - name: Generate prisma schema
         run: npx prisma generate
-    #   - name: change dir
-    #     run: cd /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot
-    #   - run: pm2 restart 0
+      - name: change dir
+        run: cd /home/trimo/actions-runner/src/trimo-wa-bot/trimo-wa-bot
+      - run: pm2 restart 0
