@@ -9,6 +9,9 @@ const client = new Client({
   authStrategy: new LocalAuth({
     dataPath: "/home/trimo/wasap-auth",
   }),
+  puppeteer: {
+    args: ["--no-sandbox"],
+  },
 });
 
 client.on("message_create", async (message) => {
